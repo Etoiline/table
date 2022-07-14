@@ -1,8 +1,11 @@
 import React from 'react'
 import HeaderStyle from './HeaderStyle.module.css'
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import SortTable from '../../sortTable/SortTable'
+import { useContext } from 'react'
+import { DataContext } from '../../provider/DataProvider'
 
 function HeaderTable(props) {
+
   const header = props.header
   const headerTitle = header.map((elt) => {
     const tmp = elt.split(/(?=[A-Z])/).join(' ')
@@ -12,11 +15,13 @@ function HeaderTable(props) {
   return (
     <thead className={HeaderStyle.thead}>
       <tr>
-        {headerTitle.map((title) => (
-          <>
-            <th key={title}>{title}</th>
-            {/* <FontAwesomeIcon icon="fa-solid fa-sort-up" /> */}
-          </>
+        {headerTitle.map((title, key) => (
+          <th key={key}>
+            <div className={HeaderStyle.content}>
+              {title}
+              <SortTable className={HeaderStyle.sortIcons} />
+            </div>
+          </th>
         ))}
       </tr>
     </thead>
