@@ -5,16 +5,17 @@ import TableStyle from './TableStyle.module.css'
 import { DataContext } from '../../provider/DataProvider'
 
 function DisplayTable(props) {
-  const data = useContext(DataContext)
+  const data = useContext(DataContext).data
   console.log('dataDisplay', data)
   const title = Object.keys(data[0]) // extrait les noms des colonnes
+  console.log('title', title)
   // const size = title.length
   // console.log(data, title, size)
   return (
     <div>
       <table className={TableStyle.table}>
-        <HeaderTable header={title} />
-        <BodyTable data={data} />
+        {/* <HeaderTable header={title} /> */}
+        {/* <BodyTable data={data} /> */}
       </table>
     </div>
   )

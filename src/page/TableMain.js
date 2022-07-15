@@ -7,15 +7,18 @@ export const UserContext = React.createContext()
 function Table(props) {
   const { newOrderData, dataProvider } = useContext(DataContext)
   useEffect(() => {
-    newOrderData(props.data)
-  }, [])
-  console.log('donnees index', dataProvider)
+    if (props.data){
+      newOrderData(props.data)
+    }
+  }, [props.data])
+  const data = useContext(DataContext).data
+  console.log('donnees index', data)
   // const a = data[0]
   // console.log('data', data[0], typeof a, Object.keys(a), Object.keys(a).length)
   return (
     <div>
       <Header />
-      {/* <DisplayTable /> */}
+      <DisplayTable />
     </div>
   )
 }
