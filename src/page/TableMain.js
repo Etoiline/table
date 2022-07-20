@@ -1,25 +1,19 @@
-import React, { useContext, useEffect } from 'react'
-import { DataContext } from '../component/provider/DataProvider'
-import Header from '../component/displayTable/header/Header'
-import DisplayTable from '../component/displayTable/table/DisplayTable'
+import React, { useEffect, useState } from 'react'
+import SelectMaxEntries from './SelectEntries'
 
-export const UserContext = React.createContext()
+
 function Table(props) {
-  const { newOrderData, dataProvider } = useContext(DataContext)
-  useEffect(() => {
-    if (props.data){
-      newOrderData(props.data)
-    }
-  }, [props.data])
-  const data = useContext(DataContext).data
-  console.log('donnees index', data)
+  const [maxEntries, setMaxEntries] = useState(10)
+
+  console.log('donnees index', maxEntries)
   // const a = data[0]
   // console.log('data', data[0], typeof a, Object.keys(a), Object.keys(a).length)
   return (
-    <div>
-      <Header />
-      <DisplayTable />
-    </div>
+    <section>
+      <div className='flex my-6'>
+        <SelectMaxEntries setFunction={setMaxEntries} />
+      </div>
+    </section>
   )
 }
 
