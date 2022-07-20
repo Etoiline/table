@@ -1,16 +1,15 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import HeaderStyle from './HeaderStyle.module.css'
 import SortTable from '../../sortTable/SortTable'
-import { useContext } from 'react'
 import { DataContext } from '../../provider/DataProvider'
 
 function HeaderTable(props) {
-
   const header = props.header
   const headerTitle = header.map((elt) => {
     const tmp = elt.split(/(?=[A-Z])/).join(' ')
     return tmp[0].toUpperCase() + tmp.slice(1)
   })
+  console.log(headerTitle)
 
   return (
     <thead className={HeaderStyle.thead}>

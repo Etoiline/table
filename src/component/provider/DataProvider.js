@@ -4,8 +4,9 @@ export const DataContext = createContext()
 
 function DataProvider(props) {
   const [data, setData] = useState([])
-  const newOrderData = (data) => {
-    setData(data)
+  const newOrderData = (myData) => {
+    console.log('mydata', myData)
+    setData(myData)
   }
   console.log('provider', data)
 

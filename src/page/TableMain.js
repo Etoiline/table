@@ -5,13 +5,14 @@ import DisplayTable from '../component/displayTable/table/DisplayTable'
 
 export const UserContext = React.createContext()
 function Table(props) {
-  const { newOrderData, dataProvider } = useContext(DataContext)
+  const { newOrderData, data } = useContext(DataContext)
   useEffect(() => {
-    if (props.data){
+    if (props.data) {
+      console.log(props.data)
       newOrderData(props.data)
     }
-  }, [props.data])
-  const data = useContext(DataContext).data
+  }, [])
+
   console.log('donnees index', data)
   // const a = data[0]
   // console.log('data', data[0], typeof a, Object.keys(a), Object.keys(a).length)
