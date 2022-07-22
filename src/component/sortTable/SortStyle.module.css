@@ -1,8 +1,0 @@
-.main {
-  display:flex;
-  flex-direction: column;
-}
-
-.main>i {
-  height:8px;
-}
