@@ -6,7 +6,7 @@ export default function DisplayTable(props) {
     const tmp = elt.split(/(?=[A-Z])/).join(' ')
     return tmp[0].toUpperCase() + tmp.slice(1)
   })
-  headerTitle.map((title, key) => console.log('title,', title))
+  // headerTitle.map((title, key) => console.log('title,', title))
 
   return (
     <table className={tableStyle.table}>
