@@ -1,4 +1,5 @@
 import React from 'react'
+import PaginationStyle from './TablePagination.module.css'
 
 /**
  * Permet de naviguer entre les pages du tableau
@@ -22,24 +23,29 @@ export default function TablePagination(props) {
   return (
     <div>
       {
-        // Si la page actuelle n'est pas la première, on affiche le bouton précédent
-        props.currentTablePage !== 1 ? (
-          <button
-            onClick={() => {
-              handleNavigate(props.currentTablePage - 1)
-            }}
-          >
-            Previous
-          </button>
-        ) : (
-          ''
-        )
+        <button
+          className={
+            props.currentTablePage === 1
+              ? PaginationStyle.inactive
+              : PaginationStyle.active
+          }
+          onClick={() => {
+            handleNavigate(props.currentTablePage - 1)
+          }}
+        >
+          Previous
+        </button>
       }
       {
         // Créer un bouton pour chaque page
         listPages.map((page) => {
           return (
             <button
+              className={
+                props.currentTablePage === page
+                  ? PaginationStyle.inactive
+                  : PaginationStyle.active
+              }
               key={page}
               onClick={() => {
                 handleNavigate(page)
@@ -52,17 +58,19 @@ export default function TablePagination(props) {
       }
       {
         // si la page n'est pas la dernière, on affiche le bouton suivant
-        props.currentTablePage !== nbPages ? (
-          <button
-            onClick={() => {
-              handleNavigate(props.currentTablePage + 1)
-            }}
-          >
-            Next
-          </button>
-        ) : (
-          ''
-        )
+
+        <button
+          className={
+            props.currentTablePage === nbPages
+              ? PaginationStyle.inactive
+              : PaginationStyle.active
+          }
+          onClick={() => {
+            handleNavigate(props.currentTablePage + 1)
+          }}
+        >
+          Next
+        </button>
       }
     </div>
   )
