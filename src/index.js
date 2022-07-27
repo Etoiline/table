@@ -4,6 +4,7 @@ import DisplayTable from './page/DisplayTable'
 import SelectMaxEntries from './component/selectMaxEntries/SelectMaxEntries'
 import Search from './component/search/Search'
 import TablePagination from './component/tablePagination/tablePagination'
+import ShowingEntries from './component/showingEntries/ShowingEntries'
 
 export const Table = ({ data }) => {
   console.log('initialisation', data)
@@ -52,14 +53,18 @@ export const Table = ({ data }) => {
         <Search setFunction={setQuery} />
       </div>
       <DisplayTable title={title} data={displayedData} />
-      <div>
+      <div className={tableStyle.footer}>
+        <ShowingEntries
+          dataToDisplayLength={dataToDisplayLength}
+          maxEntries={maxEntries}
+          currentTablePage={currentTablePage}
+        />
         <TablePagination
           dataToDisplayLength={dataToDisplayLength}
           maxEntries={maxEntries}
           currentTablePage={currentTablePage}
           setFunction={setCurrentTablePage}
         />
-        <p>{currentTablePage}</p>
       </div>
     </section>
   )
