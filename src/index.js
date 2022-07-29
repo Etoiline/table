@@ -27,6 +27,7 @@ export const Table = ({ data }) => {
   const [displayedData, setDisplayedData] = useState(data.slice(0, 10)) // par défaut on affiche les données de 0 à 10
   const [currentTablePage, setCurrentTablePage] = useState(1)
   const [dataToDisplayLength, setDataToDisplayLength] = useState(data.length)
+  const [sort, setSort] = useState([0, '']) // 1 tri ascendant -- 2 tri descendant
 
   useEffect(() => {
     // filtre des résultats selon la recherche
@@ -36,15 +37,43 @@ export const Table = ({ data }) => {
       )
     )
 
+    var sortedData = filteredData
+    if (sort[1] !== '') {
+      if (sort[0] === 1) {
+        sortedData = filteredData.sort(function compare(a, b) {
+          if (a[sort[1]] < b[sort[1]]) {
+            return -1
+          }
+          if (a[sort[1]] > b[sort[1]]) {
+            return 1
+          }
+          return 0
+        })
+      } else {
+        sortedData = filteredData.sort(function compare(a, b) {
+          if (a[sort[1]] > b[sort[1]]) {
+            return -1
+          }
+          if (a[sort[1]] < b[sort[1]]) {
+            return 1
+          }
+          return 0
+        })
+      }
+    }
+
     // données à afficher en tenant compte du maxEntries
-    const dataToDisplay = filteredData.slice(
+    const dataToDisplay = sortedData.slice(
       maxEntries * currentTablePage - maxEntries,
       maxEntries * currentTablePage
     )
+
     setDisplayedData(dataToDisplay)
     setDataToDisplayLength(filteredData.length)
-    console.log('filteredDat', filteredData)
-  }, [query, maxEntries, currentTablePage])
+    // console.log('filteredDat', filteredData)
+
+    console.log('sort', sort)
+  }, [query, maxEntries, currentTablePage, sort])
 
   return (
     <section>
@@ -52,7 +81,7 @@ export const Table = ({ data }) => {
         <SelectMaxEntries setFunction={setMaxEntries} />
         <Search setFunction={setQuery} />
       </div>
-      <DisplayTable title={title} data={displayedData} />
+      <DisplayTable title={title} data={displayedData} setFunction={setSort} />
       <div className={tableStyle.footer}>
         <ShowingEntries
           dataToDisplayLength={dataToDisplayLength}
