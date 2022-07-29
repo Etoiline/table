@@ -81,7 +81,12 @@ export const Table = ({ data }) => {
         <SelectMaxEntries setFunction={setMaxEntries} />
         <Search setFunction={setQuery} />
       </div>
-      <DisplayTable title={title} data={displayedData} setFunction={setSort} />
+      <DisplayTable
+        title={title}
+        data={displayedData}
+        sortedColumn={sort[1]}
+        setFunction={setSort}
+      />
       <div className={tableStyle.footer}>
         <ShowingEntries
           dataToDisplayLength={dataToDisplayLength}

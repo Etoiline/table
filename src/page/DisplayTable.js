@@ -11,7 +11,7 @@ export default function DisplayTable(props) {
 
   const handleSort = (order, column) => {
     props.setFunction([order, column])
-    console.log('sort asc', order, column)
+    // console.log('sort asc', order, column)
   }
 
   return (
@@ -19,7 +19,10 @@ export default function DisplayTable(props) {
       <thead>
         <tr>
           {props.title.map((title, key) => (
-            <th key={key}>
+            <th
+              key={key}
+              className={title === props.sortedColumn ? tableStyle.sorted : ''}
+            >
               <div className={tableStyle.theadContent}>
                 {title
                   .split(/(?=[A-Z])/)
@@ -52,7 +55,14 @@ export default function DisplayTable(props) {
         {props.data.map((line, key) => (
           <tr key={key}>
             {Object.entries(line).map((value, key) => (
-              <td key={key}>{value[1]}</td>
+              <td
+                key={key}
+                className={
+                  value[0] === props.sortedColumn ? tableStyle.sorted : ''
+                }
+              >
+                {value[1]}
+              </td>
             ))}
           </tr>
         ))}
