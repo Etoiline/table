@@ -8,6 +8,10 @@ import ShowingEntries from './component/showingEntries/ShowingEntries'
 
 export const Table = ({ data }) => {
   console.log('initialisation', data)
+  const dataLength = data.length
+  if (dataLength === 0) {
+    return null
+  }
 
   const title = Object.keys(data[0])
   console.log('values', Object.values(data[0]))
@@ -76,30 +80,38 @@ export const Table = ({ data }) => {
   }, [query, maxEntries, currentTablePage, sort])
 
   return (
-    <section>
-      <div className={tableStyle.header}>
-        <SelectMaxEntries setFunction={setMaxEntries} />
-        <Search setFunction={setQuery} />
-      </div>
-      <DisplayTable
-        title={title}
-        data={displayedData}
-        sortedColumn={sort[1]}
-        setFunction={setSort}
-      />
-      <div className={tableStyle.footer}>
-        <ShowingEntries
-          dataToDisplayLength={dataToDisplayLength}
-          maxEntries={maxEntries}
-          currentTablePage={currentTablePage}
-        />
-        <TablePagination
-          dataToDisplayLength={dataToDisplayLength}
-          maxEntries={maxEntries}
-          currentTablePage={currentTablePage}
-          setFunction={setCurrentTablePage}
-        />
-      </div>
-    </section>
+    <div>
+      {dataLength !== 0 ? (
+        <section>
+          <div className={tableStyle.header}>
+            <SelectMaxEntries setFunction={setMaxEntries} />
+            <Search setFunction={setQuery} />
+          </div>
+          <DisplayTable
+            title={title}
+            data={displayedData}
+            sortedColumn={sort[1]}
+            setFunction={setSort}
+          />
+          <div className={tableStyle.footer}>
+            <ShowingEntries
+              dataToDisplayLength={dataToDisplayLength}
+              maxEntries={maxEntries}
+              currentTablePage={currentTablePage}
+            />
+            <TablePagination
+              dataToDisplayLength={dataToDisplayLength}
+              maxEntries={maxEntries}
+              currentTablePage={currentTablePage}
+              setFunction={setCurrentTablePage}
+            />
+          </div>
+        </section>
+      ) : (
+        <div />
+      )}
+    </div>
   )
 }
+
+export default Table

@@ -1,3 +1,6 @@
+// export const contentStore = '[{"firstName":"Tony","lastName":"Stark","birthday":"1970/05/29","job":"2022/07/17","street":"Sofia","city":"New York","state":"AL","zipCode":"5784","department":"Marketing"},{"firstName":"Bruce","lastName":"Banner","birthday":"1969/12/18","job":"2022/07/22","street":"Sakaari","city":"Los Angeles","state":"AZ","zipCode":"43236","department":"Marketing"}]'
+
+
 export const contentStore = [
   {"firstName":"Tony","lastName":"Stark","birthday":"1970/05/29","job":"2022/07/17","street":"Sofia","city":"New York","state":"AL","zipCode":"5784","department":"Marketing"},
   {"firstName":"Bruce","lastName":"Banner","birthday":"1969/12/18","job":"2022/07/22","street":"Sakaari","city":"Los Angeles","state":"AZ","zipCode":"43236","department":"Marketing"},

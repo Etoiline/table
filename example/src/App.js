@@ -7,7 +7,7 @@ import { contentStore } from './store/LocalStore'
 
 
 const App = () => {
-  return <Table data={contentStore}/>
+  return <Table data={[]}/>
 }
 
 export default App
