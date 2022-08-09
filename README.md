@@ -20,10 +20,17 @@ import '@laura/table/dist/index.css'
 
 class Example extends Component {
   render() {
-    return <MyComponent />
+    return <MyComponent data={[]} />
   }
 }
 ```
+
+Ci-dessous deux d'images montrant l'utilisation de la librairie.
+Le composant doit être utilisé avec un paramètre : un tableau des données à afficher. Ces données doivent être sous forme d'ojbet [{colone:valeur, colone2:valeur2}, {colone:valeur3, colone2:valeur4}]
+
+
+![Cover](https://github.com/Etoiline/table/blob/tableV2/img/CodeTable.png)
+![Cover](https://github.com/Etoiline/table/blob/tableV2/img/RenduTable.png)
 
 ## License
 
