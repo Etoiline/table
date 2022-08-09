@@ -1,2 +1,5 @@
-Recherche dans tout le tableau
-Recherche non sensible à la casse
+Améliorations : 
+
+    - l'utilisateur peut choisir d'afficher ou non les différents modules (recherche, max affichage, ...) via un booléen par exemple
+    - gérer les types de colonnes (dâtes notamment) pour les tris/affichage (demander à l'utilisateur de fournir les types ?)
+    - utiliser les icones bootstrap pour le tri des colones : la librairie peut-être mise dans les dépendances, là l'utilisateur doit inclure manuellement fontawesome
